@@ -1,0 +1,34 @@
+@model QLSP.Models.Product
+
+<h2>Thêm sản phẩm</h2>
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class=" py-3 w-50">
+        @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="my-2">
+                @Html.LabelFor(m => m.TenSanPham, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.TenSanPham, new { @class = "form-control" })
+            </div>
+
+            <div class="my-2">
+                @Html.LabelFor(m => m.Gia, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Gia, new { @class = "form-control", type = "number", min = "0" })
+            </div>
+
+            <div class="my-2">
+                @Html.LabelFor(m => m.AnhSanPham, new { @class = "form-label" })
+                <input type="file" name="file" class="form-control" accept="image/*" required />
+            </div>
+
+            <div class="my-2">
+                @Html.LabelFor(m => m.MoTa, new { @class = "form-label" })
+                @Html.TextAreaFor(m => m.MoTa, new { @class = "form-control", rows = "3" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+        }
+    </div>
+</div>
+
+<a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Trở về trang sản phẩm</a>

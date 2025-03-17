@@ -1,0 +1,37 @@
+@model QLSP.Models.Product
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+}
+
+<h2 class="text-center my-4">Chỉnh sửa sản phẩm</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Tên sản phẩm</label>
+        <input type="text" class="form-control" asp-for="TenSanPham" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Giá</label>
+        <input type="number" class="form-control" asp-for="Gia" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Mô tả</label>
+        <textarea class="form-control" asp-for="MoTa"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Hình ảnh</label>
+        <input type="file" class="form-control" name="uploadedImage">
+        @if (!string.IsNullOrEmpty(Model.AnhSanPham))
+        {
+            <img src="@Model.AnhSanPham" alt="Ảnh sản phẩm" class="img-thumbnail mt-2" width="150">
+        }
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a href="@Url.Action("Index", "Products")" class="btn btn-secondary">Hủy</a>
+</form>

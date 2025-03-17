@@ -1,0 +1,28 @@
+﻿@model List<QLSP.Models.Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2 class="text-center my-4">Danh sách sản phẩm</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@item.AnhSanPham" class="card-img-top" alt="@item.TenSanPham">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">@item.TenSanPham</h5>
+                        
+                        <p class="text-danger fw-bold">$@item.Gia</p>
+                        <p class="card-text">@item.MoTa</p>
+                        <a href="@Url.Action("Edit", "Products", new { id = item.Id })" class="btn btn-warning">Chỉnh sửa</a>
+                        <button class="btn btn-success">Mua ngay</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
